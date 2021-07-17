@@ -19,4 +19,19 @@ and
 Let's Start !!
 
 ## First of all, get your data. 
+In this example, I use the data contained in matlab, i.e., the stock returns dataset.
 
+```javascript
+clear;clc
+addpath('scr\')
+
+load stockreturns.mat
+x = stocks(:,1);
+y = stocks(:,2);
+```
+## Plot your data
+
+```javascript
+figure;
+scatterhist(x,y)
+```
