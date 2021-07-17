@@ -124,3 +124,67 @@ stat = mycopula([u,v]);
 'BB7'      |    1.9456 |   [    0.6175] |   0.057222  |  0.023555  |  -60.891
 'Joe'      |    2.2048 |   []           |   0.052799  |  0.026767  |  -52.821
 'Clayton'   |   1.1001 |   []           |    0.10383  |  0.041419  |  -41.987
+
+## Plot your copula distribution
+For 1-parameter copula:
+```javascript
+x1 = 0:0.1:1;
+y1 = 0:0.1:1;
+[u1,v1] = meshgrid(x1,y1); 
+Cx = cdfcopula('Gaussian',[u1(:),v1(:)],0.7206);
+Cx = reshape(Cx,[length(x1),length(y1)]);
+Cx = Cx';
+
+contour(x1,y1,Cx);colorbar
+```
+<img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/img/Fig3.png" alt="drawing" width="500"/>
+
+For 2-parameter copula:
+```javascript
+x1 = 0:0.1:1;
+y1 = 0:0.1:1;
+[u1,v1] = meshgrid(x1,y1); 
+Cx = cdfcopula('BB8',[u1(:),v1(:)],5.2154,0.7448);
+Cx = reshape(Cx,[length(x1),length(y1)]);
+Cx = Cx';
+
+contour(x1,y1,Cx);colorbar;
+```
+<img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/img/Fig4.png" alt="drawing" width="500"/>
+
+## Plot your copula density with transformed data
+```javascript
+For 1-parameter copula:
+x1 = 0:0.1:1;
+y1 = 0:0.1:1;
+[u1,v1] = meshgrid(x1,y1); 
+cx = pdfcopula('Gaussian',[u1(:),v1(:)],0.7206);
+cx = reshape(cx,[length(x1),length(y1)]);
+cx = cx';
+
+figure;
+contour(x1,y1,cx);colorbar
+hold on 
+scatter(u,v)
+```
+<img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/img/Fig5.png" alt="drawing" width="500"/>
+
+## Plot your copula density with actual data
+```javascript
+For 1-parameter copula:
+x1 = 0:0.01:1;
+y1 = 0:0.01:1;
+[u1,v1] = meshgrid(x1,y1); 
+cx = pdfcopula('Gaussian',[u1(:),v1(:)],0.7206);
+cx = reshape(cx,[length(x1),length(y1)]);
+cx = cx';
+x1 = icdf(Fx,u1);f1 = pdf(Fx,x1);
+x2 = icdf(Fy,v1);f2 = pdf(Fy,x2);
+fx = f1.*f2.*cx;
+
+figure;
+contour(x1,x2,fx);colorbar
+hold on 
+scatter(x,y)
+```
+<img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/img/Fig6.png" alt="drawing" width="500"/>
