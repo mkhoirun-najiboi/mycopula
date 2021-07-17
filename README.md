@@ -169,7 +169,7 @@ scatter(u,v)
 ```
 <img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/img/Fig5.png" alt="drawing" width="500"/>
 
-## Plot your copula density with actual data
+## Plot your joint density function with actual data
 ```javascript
 For 1-parameter copula:
 x1 = 0:0.01:1;
