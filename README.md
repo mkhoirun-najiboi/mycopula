@@ -35,3 +35,4 @@ y = stocks(:,2);
 figure;
 scatterhist(x,y)
 ```
+![Fig 1](https://github.com/mkhoirun-najiboi/mycopula/blob/main/img/Fig1.eps)
