@@ -152,9 +152,9 @@ contour(x1,y1,Cx);colorbar;
 ```
 <img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/img/Fig4.png" alt="drawing" width="500"/>
 
-## Plot your copula density with transformed data
-```javascript
+## Plot your copula density with transformed data 
 For 1-parameter copula:
+```javascript
 x1 = 0:0.1:1;
 y1 = 0:0.1:1;
 [u1,v1] = meshgrid(x1,y1); 
@@ -170,8 +170,8 @@ scatter(u,v)
 <img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/img/Fig5.png" alt="drawing" width="500"/>
 
 ## Plot your joint density function with actual data
-```javascript
 For 1-parameter copula:
+```javascript
 x1 = 0:0.01:1;
 y1 = 0:0.01:1;
 [u1,v1] = meshgrid(x1,y1); 
