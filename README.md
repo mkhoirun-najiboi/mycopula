@@ -22,7 +22,7 @@ and
 
 [Najib, M.K., Nurdiati, S. & Sopaheluwakan, A. (2021). Copula-based joint distribution analysis of the ENSO effect on the drought indicators over Borneo fire-prone areas. _Model. Earth Syst. Environ._ https://doi.org/10.1007/s40808-021-01267-5](https://doi.org/10.1007/s40808-021-01267-5) 
 
-[Mohamad Khoirun Najib, Sri Nurdiati, Ardhasena Sopaheluwakan et al. Multivariate Fire Risk Models Using Sample-Size Reduction and Copula Regression in Kalimantan, Indonesia, 17 September 2021, PREPRINT (Version 1) available at Research Square [https://doi.org/10.21203/rs.3.rs-914087/v1]](https://www.researchsquare.com/article/rs-914087/v1.pdf) 
+[Najib, M.K., Nurdiati, S. & Sopaheluwakan, A. (2021). Multivariate Fire Risk Models Using Sample-Size Reduction and Copula Regression in Kalimantan, Indonesia, _PREPRINT (Version 1) available at Research Square_ [https://doi.org/10.21203/rs.3.rs-914087/v1]](https://www.researchsquare.com/article/rs-914087/v1.pdf) 
 
 Let's Start !!
 
