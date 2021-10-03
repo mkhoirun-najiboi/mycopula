@@ -5,7 +5,7 @@ A MATLAB script to built a copula-based joint distribution for bivariate and tri
 This is an example, how to use this package code to build a copula-based joint distribution function. You can download all code above and open ```Examples.mlx``` in MATLAB.
 I used 11 bivariate and 8 trivariate different copula as mentioned in
 
-Preprints _Conference Paper_: [Najib_STACLIM2021.pdf](https://github.com/mkhoirun-najiboi/mycopula/blob/main/paper/Najib_STACLIM2021.pdf) 
+Preprints _Conference Paper_: [Najib_QuantifyingtheJointDist](https://github.com/mkhoirun-najiboi/mycopula/blob/main/paper/Najib_STACLIM2021.pdf) 
 
 Article Journal: [Najib_CopulaBasedJointDist](https://doi.org/10.1007/s40808-021-01267-5) 
 
