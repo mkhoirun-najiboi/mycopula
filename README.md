@@ -5,10 +5,10 @@ A MATLAB script to built a copula-based joint distribution for bivariate and tri
 This is an example, how to use this package code to build a copula-based joint distribution function. You can download all code above and open ```Examples.mlx``` in MATLAB.
 I used 11 bivariate and 8 trivariate different copula as mentioned in
 
-Preprints _Conference Paper_: 
+_Conference Paper_: 
 [Najib_QuantifyingtheJointDist](https://iopscience.iop.org/article/10.1088/1755-1315/880/1/012002/pdf) 
 
-Article Journal: 
+_Article Journal_: 
 [Najib_CopulaBasedJointDist](https://doi.org/10.1007/s40808-021-01267-5) 
 
 Preprints _Article Journal_: 
@@ -21,7 +21,7 @@ https://github.com/mkhoirun-najiboi/mycopula
 
 and
 
-[Najib, M.K., Nurdiati, S. & Sopaheluwakan, A. (2021). Quantifying the Joint Distribution of Drought Indicators in Borneo Fire-Prone Area. _IOP Conf. Ser.: Earth Environ. Sci._ **880** 012002](https://iopscience.iop.org/article/10.1088/1755-1315/880/1/012002/pdf)
+[Najib, M.K., Nurdiati, S. & Sopaheluwakan, A. (2021). Quantifying the Joint Distribution of Drought Indicators in Borneo Fire-Prone Area. _IOP Conf. Ser.: Earth Environ. Sci._ **880** 012002. https://doi.org/10.1088/1755-1315/880/1/012002](https://iopscience.iop.org/article/10.1088/1755-1315/880/1/012002/pdf)
 
 [Najib, M.K., Nurdiati, S. & Sopaheluwakan, A. (2021). Copula-based joint distribution analysis of the ENSO effect on the drought indicators over Borneo fire-prone areas. _Model. Earth Syst. Environ._ https://doi.org/10.1007/s40808-021-01267-5](https://doi.org/10.1007/s40808-021-01267-5) 
 
