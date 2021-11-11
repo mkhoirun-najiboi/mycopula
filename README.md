@@ -6,7 +6,7 @@ This is an example, how to use this package code to build a copula-based joint d
 I used 11 bivariate and 8 trivariate different copula as mentioned in
 
 Preprints _Conference Paper_: 
-[Najib_QuantifyingtheJointDist](https://github.com/mkhoirun-najiboi/mycopula/blob/main/paper/Najib_STACLIM2021.pdf) 
+[Najib_QuantifyingtheJointDist](https://iopscience.iop.org/article/10.1088/1755-1315/880/1/012002/pdf) 
 
 Article Journal: 
 [Najib_CopulaBasedJointDist](https://doi.org/10.1007/s40808-021-01267-5) 
@@ -21,7 +21,7 @@ https://github.com/mkhoirun-najiboi/mycopula
 
 and
 
-[Najib, M.K., Nurdiati, S. & Sopaheluwakan, A. (2021). Quantifying the Joint Distribution of Drought Indicators in Borneo Fire-Prone Area. In: The 4th International Conference on Science & Technology Applications in Climate Change.](https://github.com/mkhoirun-najiboi/mycopula/blob/main/paper/Najib_STACLIM2021.pdf)
+[Najib, M.K., Nurdiati, S. & Sopaheluwakan, A. (2021). Quantifying the Joint Distribution of Drought Indicators in Borneo Fire-Prone Area. _IOP Conf. Ser.: Earth Environ. Sci._ **880** 012002](https://iopscience.iop.org/article/10.1088/1755-1315/880/1/012002/pdf)
 
 [Najib, M.K., Nurdiati, S. & Sopaheluwakan, A. (2021). Copula-based joint distribution analysis of the ENSO effect on the drought indicators over Borneo fire-prone areas. _Model. Earth Syst. Environ._ https://doi.org/10.1007/s40808-021-01267-5](https://doi.org/10.1007/s40808-021-01267-5) 
 
