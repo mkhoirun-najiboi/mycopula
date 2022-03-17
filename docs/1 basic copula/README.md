@@ -5,14 +5,11 @@ A MATLAB script to built a copula-based joint distribution for bivariate and tri
 This is an example, how to use this package code to build a copula-based joint distribution function. You can download all code above and open ```Examples.mlx``` in MATLAB.
 I used 11 bivariate and 8 trivariate different copula as mentioned in
 
-_Conference Paper_: 
-[Najib_QuantifyingtheJointDist](https://iopscience.iop.org/article/10.1088/1755-1315/880/1/012002/pdf) 
+_Conference Paper_:
+[Najib_QuantifyingtheJointDist](https://iopscience.iop.org/article/10.1088/1755-1315/880/1/012002/pdf)
 
-_Article Journal_: 
-[Najib_CopulaBasedJointDist](https://doi.org/10.1007/s40808-021-01267-5) 
-
-Preprints _Article Journal_: 
-[Najib_MultivariateFireRisk](https://www.researchsquare.com/article/rs-914087/v1.pdf)
+_Article Journal_:
+[Najib_CopulaBasedJointDist](https://doi.org/10.1007/s40808-021-01267-5)
 
 I suggest you to read the article before using this code, in order to understand what is in this code.
 If you use this code for your work, please cite this web page and our work above.
@@ -23,13 +20,11 @@ and
 
 [Najib, M.K., Nurdiati, S. & Sopaheluwakan, A. (2021). Quantifying the Joint Distribution of Drought Indicators in Borneo Fire-Prone Area. _IOP Conf. Ser.: Earth Environ. Sci._ **880** 012002. https://doi.org/10.1088/1755-1315/880/1/012002](https://iopscience.iop.org/article/10.1088/1755-1315/880/1/012002/pdf)
 
-[Najib, M.K., Nurdiati, S. & Sopaheluwakan, A. (2021). Copula-based joint distribution analysis of the ENSO effect on the drought indicators over Borneo fire-prone areas. _Model. Earth Syst. Environ._ https://doi.org/10.1007/s40808-021-01267-5](https://doi.org/10.1007/s40808-021-01267-5) 
-
-[Najib, M.K., Nurdiati, S. & Sopaheluwakan, A. (2021). Multivariate Fire Risk Models Using Sample-Size Reduction and Copula Regression in Kalimantan, Indonesia, _PREPRINT (Version 1) available at Research Square_ [https://doi.org/10.21203/rs.3.rs-914087/v1]](https://www.researchsquare.com/article/rs-914087/v1.pdf) 
+[Najib, M.K., Nurdiati, S. & Sopaheluwakan, A. (2021). Copula-based joint distribution analysis of the ENSO effect on the drought indicators over Borneo fire-prone areas. _Model. Earth Syst. Environ._ https://doi.org/10.1007/s40808-021-01267-5](https://doi.org/10.1007/s40808-021-01267-5)  
 
 Let's Start !!
 
-## First of all, get your data. 
+## First of all, get your data.
 In this example, I use the data contained in matlab, i.e., the stock returns dataset.
 
 ```javascript
@@ -46,7 +41,7 @@ y = stocks(:,2);
 figure;
 scatterhist(x,y)
 ```
-<img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/img/Fig1.png" alt="drawing" width="500"/>
+<img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/docs/1%20basic%20copula/img/Fig1.png" alt="drawing" width="500"/>
 
 ## Fit the univariate marginal distributions of each data
 I used three marginal distributions, i.e., Generalized Extreme Value and Lognormal Distribution for continous data, and Negative Binomial Distribution for discrete data.
@@ -54,7 +49,7 @@ I used three marginal distributions, i.e., Generalized Extreme Value and Lognorm
 [Fx,statx] = fitter(x,'gev')
 ```
 ```
-Fx = 
+Fx =
 
   GeneralizedExtremeValueDistribution
 
@@ -64,7 +59,7 @@ Fx =
        mu = -0.549162   [-0.77785, -0.320473]
 
 
-statx = 
+statx =
 
   struct with fields:
 
@@ -82,7 +77,7 @@ statx =
 [Fy,staty] = fitter(y,'gev')
 ```
 ```
-Fy = 
+Fy =
 
   GeneralizedExtremeValueDistribution
 
@@ -92,7 +87,7 @@ Fy =
        mu = -0.668376   [-0.930156, -0.406596]
 
 
-staty = 
+staty =
 
   struct with fields:
 
@@ -115,7 +110,7 @@ u = cdf(Fx,x);
 v = cdf(Fy,y);
 scatterhist(u,v)
 ```
-<img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/img/Fig2.png" alt="drawing" width="500"/>
+<img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/docs/1%20basic%20copula/img/Fig2.png" alt="drawing" width="500"/>
 
 ## Get your fittest copula
 ```javascript
@@ -141,51 +136,51 @@ For 1-parameter copula:
 ```javascript
 x1 = 0:0.1:1;
 y1 = 0:0.1:1;
-[u1,v1] = meshgrid(x1,y1); 
+[u1,v1] = meshgrid(x1,y1);
 Cx = cdfcopula('Gaussian',[u1(:),v1(:)],0.7206);
 Cx = reshape(Cx,[length(x1),length(y1)]);
 Cx = Cx';
 
 contour(x1,y1,Cx);colorbar
 ```
-<img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/img/Fig3.png" alt="drawing" width="500"/>
+<img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/docs/1%20basic%20copula/img/Fig3.png" alt="drawing" width="500"/>
 
 For 2-parameter copula:
 ```javascript
 x1 = 0:0.1:1;
 y1 = 0:0.1:1;
-[u1,v1] = meshgrid(x1,y1); 
+[u1,v1] = meshgrid(x1,y1);
 Cx = cdfcopula('BB8',[u1(:),v1(:)],5.2154,0.7448);
 Cx = reshape(Cx,[length(x1),length(y1)]);
 Cx = Cx';
 
 contour(x1,y1,Cx);colorbar;
 ```
-<img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/img/Fig4.png" alt="drawing" width="500"/>
+<img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/docs/1%20basic%20copula/img/Fig4.png" alt="drawing" width="500"/>
 
-## Plot your copula density with transformed data 
+## Plot your copula density with transformed data
 For 1-parameter copula:
 ```javascript
 x1 = 0:0.1:1;
 y1 = 0:0.1:1;
-[u1,v1] = meshgrid(x1,y1); 
+[u1,v1] = meshgrid(x1,y1);
 cx = pdfcopula('Gaussian',[u1(:),v1(:)],0.7206);
 cx = reshape(cx,[length(x1),length(y1)]);
 cx = cx';
 
 figure;
 contour(x1,y1,cx);colorbar
-hold on 
+hold on
 scatter(u,v)
 ```
-<img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/img/Fig5.png" alt="drawing" width="500"/>
+<img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/docs/1%20basic%20copula/img/Fig5.png" alt="drawing" width="500"/>
 
 ## Plot your joint density function with actual data
 For 1-parameter copula:
 ```javascript
 x1 = 0:0.01:1;
 y1 = 0:0.01:1;
-[u1,v1] = meshgrid(x1,y1); 
+[u1,v1] = meshgrid(x1,y1);
 cx = pdfcopula('Gaussian',[u1(:),v1(:)],0.7206);
 cx = reshape(cx,[length(x1),length(y1)]);
 cx = cx';
@@ -195,7 +190,7 @@ fx = f1.*f2.*cx;
 
 figure;
 contour(x1,x2,fx);colorbar
-hold on 
+hold on
 scatter(x,y)
 ```
-<img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/img/Fig6.png" alt="drawing" width="500"/>
+<img src="https://github.com/mkhoirun-najiboi/mycopula/blob/main/docs/1%20basic%20copula/img/Fig6.png" alt="drawing" width="500"/>
