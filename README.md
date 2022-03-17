@@ -3,7 +3,7 @@ A MATLAB script to built a copula-based joint distribution for bivariate and tri
 
 ## what's in here?
 - [Basic Copula](https://github.com/mkhoirun-najiboi/mycopula/blob/main/docs/1%20basic%20copula/) - For Pair-Variables with Positive Dependencies
-- [Rotated Copula](https://github.com/mkhoirun-najiboi/mycopula/blob/main/docs/2%20rorated%20copula) - For Pair-Variables with Positive and Negative Dependencies
+- [Rotated Copula](https://github.com/mkhoirun-najiboi/mycopula/blob/main/docs/2%20rotated%20copula) - For Pair-Variables with Positive and Negative Dependencies
 
 ## References
 - [Quantifying the Joint Distribution of Drought Indicators in Borneo Fire-Prone Area. In _IOP Conf. Ser.: Earth Environ. Sci._](https://iopscience.iop.org/article/10.1088/1755-1315/880/1/012002/pdf)
