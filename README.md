@@ -2,7 +2,7 @@
 A MATLAB script to built a copula-based joint distribution for bivariate and tri-variate cases.
 
 ## what's in here?
-- [Basic Copula](https://github.com/mkhoirun-najiboi/mycopula/blob/main/docs/1%20basic%20copula/) - For Pair-Variables with Positive Dependencies
+- [Basic Copula](https://github.com/mkhoirun-najiboi/mycopula/blob/main/docs/1%20basic%20copula/) - My first ever code dealing with copula. For Pair-Variables with Positive Dependencies
 - [Rotated Copula](https://github.com/mkhoirun-najiboi/mycopula/blob/main/docs/2%20rotated%20copula) - For Pair-Variables with Positive and Negative Dependencies
 
 ## References
