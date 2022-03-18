@@ -6,6 +6,14 @@ defaults = {'adstat'   []        1    };
 sortby=lower(sortby);
 
 % check negatifity
+negative = any(data<0);
+if negative
+disp('WARNING: Your data contains negative values.')
+disp('       - The program will only display the results')
+disp('         of fitting on distributions with real domains.')
+end
+
+% check discrete
 discrete = all(0 <= data & isfinite(data) & data == round(data)); 
 if discrete
 disp('WARNING: Your data is discrete.')
@@ -20,7 +28,8 @@ dname2 = {'NBIN'};
 decis = {"fails to reject h0","reject h0"};
 
 if ~discrete
-    for i = 1:4
+    % Fitting Distribution with real domains.
+    for i = 1
         warning('');warnMsg=[];warnId=[];
         PDs{i}=fitdist(data,distName{i});
         [warnMsg,~]=lastwarn;
@@ -33,7 +42,7 @@ if ~discrete
         NLL1(i)=negloglik(PDs{i});
     end
     % Uji
-    for i = 1:length(PDs)
+    for i = 1
         D(i).DistName=dname{i};
         [h,p,ad] = adtest(data,'Distribution',PDs{i});
         D(i).ADstat = ad;
@@ -42,9 +51,32 @@ if ~discrete
         %     D1(i).NLogL=NLL1(i);
         D(i).AIC = aicbic(-NLL1(i),length(PDs{i}.Params));
     end
-end
 
-if discrete
+    if ~negative
+        for i = 2:4
+            % Fitting Distribution with positive domains.for i = 1:length(distName)
+            warning('');warnMsg=[];warnId=[];
+            PDs{i}=fitdist(data,distName{i});
+            [warnMsg,~]=lastwarn;
+            warning('off')
+            if ~isempty(warnMsg)
+                fprintf(['Warning detected for fitting ',distName{i},'\n'])
+                st=1;
+            end
+            NLL1(i)=negloglik(PDs{i});
+        end
+        % Uji
+        for i = 2:4
+            D(i).DistName=dname{i};
+            [h,p,ad] = adtest(data,'Distribution',PDs{i});
+            D(i).ADstat = ad;
+            D(i).pval = p;
+            D(i).keputusan = decis{h+1};
+            %     D1(i).NLogL=NLL1(i);
+            D(i).AIC = aicbic(-NLL1(i),length(PDs{i}.Params));
+        end
+    end
+else
     i = 1;
     warning('');warnMsg=[];warnId=[];
     PDs{i}=fitdist(data,distName2{i});
