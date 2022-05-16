@@ -19,7 +19,7 @@ with counterclockwise rotation.
 
 ## Reference
 All detail can be seen in my journal article:
-- Najib MK, Nurdiati S, Sopaheluwakan A. 2022. Multivariate Fire Risk Models using Copula Regression in Kalimantan Indonesia. Natural Hazard. Early Access. [doi: 10.1007/s11069-022-05346-3](https://doi.org/10.1007/s11069-022-05346-3)
+- Najib MK, Nurdiati S, Sopaheluwakan A. 2022. Multivariate Fire Risk Models using Copula Regression in Kalimantan Indonesia. Natural Hazard. Early Access. [doi: 10.1007/s11069-022-05346-3](https://doi.org/10.1007/s11069-022-05346-3). [Click here to read online](https://rdcu.be/cLYT8)
 
 ## How to use?
 #### Get data
