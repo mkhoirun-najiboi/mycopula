@@ -1,36 +1,42 @@
-function [stat] = mycopulaCvM(u,sortby)
+function [C,stat] = copfitter(u,varargin) 
 
 numVar = size(u,2);
 
+okargs =   {'sortby' 'verbosity' 'onlynongaussian'};
+defaults = { 'aic'    1          0};
+[sortby,verbosity,onlynongaussian] = internal.stats.parseArgs(okargs,defaults,varargin{:});
+
 if numVar==2
-%     % Gaussian
-%     family = 'Gaussian';
-%     Rho = copulafit(family,u);
-%     Cx = @(u) copulacdf('Gaussian',u,Rho);
-%     cx = @(u) copulapdf('Gaussian',u,Rho);
-%     numPar = 1;
-%     [CvM,RMSE,AIC] = copulagof(u,Cx,cx,numPar);
-%     stat(1).famili = family;
-%     stat(1).param1 = Rho(2);
-%     stat(1).param2 = [];
-%     stat(1).CvM = CvM;
-%     stat(1).RMSE = RMSE;
-%     stat(1).AIC = AIC; 
-% 
-%     % t-Student
-%     family = 't';
-%     [Rho,nu] = copulafit(family,u);
-%     Cx = @(u) copulacdf('t',u,Rho,nu);
-%     cx = @(u) copulapdf('t',u,Rho,nu);
-%     numPar = 2;
-%     [CvM,RMSE,AIC] = copulagof(u,Cx,cx,numPar);
-%     stat(2).famili = family;
-%     stat(2).param1 = Rho(2);
-%     stat(2).param2 = nu;
-%     stat(2).CvM = CvM;
-%     stat(2).RMSE = RMSE;
-%     stat(2).AIC = AIC; 
-%     
+    % Gaussian
+    family = 'Gaussian';
+    Rho = copulafit(family,u);
+    Cx = @(u) copulacdf('Gaussian',u,Rho);
+    cx = @(u) copulapdf('Gaussian',u,Rho);
+    numPar = 1;
+    [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
+    stat(1).copulaName = family;
+    stat(1).param1 = Rho(2);
+    stat(1).param2 = [];
+    stat(1).CvM = CvM;
+    stat(1).pValue = pValue;
+    stat(1).RMSE = RMSE;
+    stat(1).AIC = AIC; 
+
+    % t-Student
+    family = 't';
+    [Rho,nu] = copulafit(family,u);
+    Cx = @(u) copulacdf('t',u,Rho,nu);
+    cx = @(u) copulapdf('t',u,Rho,nu);
+    numPar = 2;
+    [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
+    stat(2).copulaName = family;
+    stat(2).param1 = Rho(2);
+    stat(2).param2 = nu;
+    stat(2).CvM = CvM;
+    stat(2).pValue = pValue;
+    stat(2).RMSE = RMSE;
+    stat(2).AIC = AIC; 
+    
     % Clayton
     family = 'Clayton';
     param = copulafit(family,u);
@@ -38,7 +44,7 @@ if numVar==2
     cx = @(u) copulapdf('Clayton',u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(3).famili = 'Clayton';
+    stat(3).copulaName = 'Clayton';
     stat(3).param1 = param;
     stat(3).param2 = [];
     stat(3).CvM = CvM;
@@ -53,7 +59,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param;
     stat(n).CvM = CvM;
     stat(n).pValue = pValue;
@@ -67,7 +73,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param;
     stat(n).CvM = CvM;
     stat(n).pValue = pValue;
@@ -81,7 +87,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param;
     stat(n).CvM = CvM;
     stat(n).pValue = pValue;
@@ -95,7 +101,7 @@ if numVar==2
     cx = @(u) copulapdf('Gumbel',u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(4).famili = 'Gumbel';
+    stat(4).copulaName = 'Gumbel';
     stat(4).param1 = param;
     stat(4).CvM = CvM;
     stat(4).pValue = pValue;
@@ -109,7 +115,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param;
     stat(n).CvM = CvM;
     stat(n).pValue = pValue;
@@ -123,7 +129,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param;
     stat(n).CvM = CvM;
     stat(n).pValue = pValue;
@@ -137,7 +143,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param;
     stat(n).CvM = CvM;
     stat(n).pValue = pValue;
@@ -151,7 +157,7 @@ if numVar==2
     cx = @(u) copulapdf('Frank',u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(5).famili = 'Frank';
+    stat(5).copulaName = 'Frank';
     stat(5).param1 = param;
     stat(5).CvM = CvM;
     stat(5).pValue = pValue;
@@ -165,7 +171,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param;
     stat(n).CvM = CvM;
     stat(n).pValue = pValue;
@@ -179,7 +185,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param;
     stat(n).CvM = CvM;
     stat(n).pValue = pValue;
@@ -193,7 +199,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param;
     stat(n).CvM = CvM;
     stat(n).pValue = pValue;
@@ -207,7 +213,7 @@ if numVar==2
     cx = @(u) pdfcopula('Joe',u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(6).famili = 'Joe';
+    stat(6).copulaName = 'Joe';
     stat(6).param1 = param;
     stat(6).CvM = CvM;
     stat(6).pValue = pValue;
@@ -222,7 +228,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param;
     stat(n).CvM = CvM;
     stat(n).pValue = pValue;
@@ -238,7 +244,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param;
     stat(n).CvM = CvM;
     stat(n).pValue = pValue;
@@ -253,7 +259,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param;
     stat(n).CvM = CvM;
     stat(n).pValue = pValue;
@@ -268,7 +274,7 @@ if numVar==2
     cx = @(u) pdfcopula('Galambos',u,param1);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = 'Galambos';
+    stat(n).copulaName = 'Galambos';
     stat(n).param1 = param1; 
     stat(n).CvM = CvM;
     stat(n).pValue = pValue;
@@ -282,7 +288,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param;
     stat(n).CvM = CvM;
     stat(n).pValue = pValue;
@@ -296,7 +302,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param;
     stat(n).CvM = CvM;
     stat(n).pValue = pValue;
@@ -310,7 +316,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param;
     stat(n).CvM = CvM;
     stat(n).pValue = pValue;
@@ -325,7 +331,7 @@ if numVar==2
     cx = @(u) pdfcopula('BB7',u,param1,param2);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = 'BB7';
+    stat(n).copulaName = 'BB7';
     stat(n).param1 = param1;
     stat(n).param2 = param2;
     stat(n).CvM = CvM;
@@ -340,7 +346,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param1,param2);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param1;
     stat(n).param2 = param2;
     stat(n).CvM = CvM;
@@ -355,7 +361,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param1,param2);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param1;
     stat(n).param2 = param2;
     stat(n).CvM = CvM;
@@ -370,7 +376,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param1,param2);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param1;
     stat(n).param2 = param2;
     stat(n).CvM = CvM;
@@ -386,7 +392,7 @@ if numVar==2
     cx = @(u) pdfcopula('BB8',u,param1,param2);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = 'BB8';
+    stat(n).copulaName = 'BB8';
     stat(n).param1 = param1;
     stat(n).param2 = param2;
     stat(n).CvM = CvM;
@@ -394,14 +400,14 @@ if numVar==2
     stat(n).RMSE = RMSE;
     stat(n).AIC = AIC;
     
-    n = 1;
+    n = 36;
     family = 'BB8-90';
     [param1,param2] = fitcopula(family,u);
     Cx = @(u) cdfcopula(family,u,param1,param2);
     cx = @(u) pdfcopula(family,u,param1,param2);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param1;
     stat(n).param2 = param2;
     stat(n).CvM = CvM;
@@ -409,14 +415,14 @@ if numVar==2
     stat(n).RMSE = RMSE;
     stat(n).AIC = AIC;
     
-    n = 2;
+    n = 37;
     family = 'BB8-180';
     [param1,param2] = fitcopula(family,u);
     Cx = @(u) cdfcopula(family,u,param1,param2);
     cx = @(u) pdfcopula(family,u,param1,param2);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param1;
     stat(n).param2 = param2;
     stat(n).CvM = CvM;
@@ -431,7 +437,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param1,param2);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param1;
     stat(n).param2 = param2;
     stat(n).CvM = CvM;
@@ -447,7 +453,7 @@ if numVar==2
     cx = @(u) pdfcopula('BB1',u,param1,param2);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = 'BB1';
+    stat(n).copulaName = 'BB1';
     stat(n).param1 = param1;
     stat(n).param2 = param2;
     stat(n).CvM = CvM;
@@ -462,7 +468,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param1,param2);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param1;
     stat(n).param2 = param2;
     stat(n).CvM = CvM;
@@ -477,7 +483,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param1,param2);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param1;
     stat(n).param2 = param2;
     stat(n).CvM = CvM;
@@ -492,7 +498,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param1,param2);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param1;
     stat(n).param2 = param2;
     stat(n).CvM = CvM;
@@ -508,7 +514,7 @@ if numVar==2
     cx = @(u) pdfcopula('BB6',u,param1,param2);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = 'BB6';
+    stat(n).copulaName = 'BB6';
     stat(n).param1 = param1;
     stat(n).param2 = param2;
     stat(n).CvM = CvM;
@@ -523,7 +529,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param1,param2);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param1;
     stat(n).param2 = param2;
     stat(n).CvM = CvM;
@@ -538,7 +544,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param1,param2);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param1;
     stat(n).param2 = param2;
     stat(n).CvM = CvM;
@@ -553,7 +559,7 @@ if numVar==2
     cx = @(u) pdfcopula(family,u,param1,param2);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(n).famili = family; 
+    stat(n).copulaName = family; 
     stat(n).param1 = param1;
     stat(n).param2 = param2;
     stat(n).CvM = CvM;
@@ -569,7 +575,7 @@ elseif numVar == 3
     cx = @(u) copulapdf('Gaussian',u,Rho);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(1).famili = family;
+    stat(1).copulaName = family;
     stat(1).param1 = Rho;
     stat(1).param2 = [];
     stat(1).CvM = CvM;
@@ -584,7 +590,7 @@ elseif numVar == 3
     cx = @(u) copulapdf('t',u,Rho,nu);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(2).famili = family;
+    stat(2).copulaName = family;
     stat(2).param1 = Rho;
     stat(2).param2 = nu;
     stat(2).CvM = CvM;
@@ -599,7 +605,7 @@ elseif numVar == 3
     cx = @(u) pdfcopula('Gumbel',u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(3).famili = 'Gumbel';
+    stat(3).copulaName = 'Gumbel';
     stat(3).param1 = param;
     stat(3).CvM = CvM;
     stat(3).pValue = pValue;
@@ -613,7 +619,7 @@ elseif numVar == 3
     cx = @(u) pdfcopula('Clayton',u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(4).famili = 'Clayton';
+    stat(4).copulaName = 'Clayton';
     stat(4).param1 = param;
     stat(4).CvM = CvM;
     stat(4).pValue = pValue;
@@ -627,7 +633,7 @@ elseif numVar == 3
     cx = @(u) pdfcopula('Frank',u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(5).famili = 'Frank';
+    stat(5).copulaName = 'Frank';
     stat(5).param1 = param;
     stat(5).CvM = CvM;
     stat(5).pValue = pValue;
@@ -641,7 +647,7 @@ elseif numVar == 3
     cx = @(u) pdfcopula(family,u,param);
     numPar = 1;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(6).famili = family;
+    stat(6).copulaName = family;
     stat(6).param1 = param;
     stat(6).CvM = CvM;
     stat(6).pValue = pValue;
@@ -655,7 +661,7 @@ elseif numVar == 3
     cx = @(u) pdfcopula(family,u,param1,param2,U3);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(7).famili = family;
+    stat(7).copulaName = family;
     stat(7).param1 = param1;
     stat(7).param2 = param2;
     stat(7).U3 = U3;
@@ -671,7 +677,7 @@ elseif numVar == 3
     cx = @(u) pdfcopula(family,u,param1,param2,U3);
     numPar = 2;
     [CvM,RMSE,AIC,pValue] = copulagof(u,Cx,cx,numPar);
-    stat(8).famili = family;
+    stat(8).copulaName = family;
     stat(8).param1 = param1;
     stat(8).param2 = param2;
     stat(8).U3 = U3;
@@ -680,23 +686,42 @@ elseif numVar == 3
     stat(8).RMSE = RMSE;
     stat(8).AIC = AIC; 
 end
-if nargin<2
-    [~,ind]=sort([stat.AIC]);
-else
-    switch lower(sortby)
-        case {'dn','kse'}
-            [~,ind]=sort([stat.CvM]);
-        case {'rmse'}
-            [~,ind]=sort([stat.RMSE]);
-        case {'aic'}
-            [~,ind]=sort([stat.AIC]);
-        case {'none'}
-            ind = 1:length(stat);
-    end
-end 
+
+if onlynongaussian
+    stat(1:2)=[];
+end
+
+switch lower(sortby)
+    case {'cvm'}
+        [~,ind]=sort([stat.CvM]);
+        sortname = 'Cramer-von Mises Statistics';
+    case {'rmse'}
+        [~,ind]=sort([stat.RMSE]);
+        sortname = 'Root Mean Squared Error';
+    case {'aic'}
+        [~,ind]=sort([stat.AIC]);
+        sortname = 'Akaike Information Criterion';
+    case {'none'}
+        ind = 1:length(stat);
+        sortname = 'No sorting';
+end
+
 stat=stat(ind);
-first_five = struct2table(stat(1:5));
-display(first_five)
+C = stat(1);
+if verbosity
+    disp(['sort by = ',sortname])
+    if verbosity>1
+        disp('Summary = ')
+        disp(' ')
+        summary = struct2table(stat);
+        disp(summary)
+    else
+        disp('Top 5 copula = ')
+        disp(' ')
+        first_five = struct2table(stat(1:5));
+        disp(first_five)
+    end
+end
 
 end
 %% Fungsi Pendukung

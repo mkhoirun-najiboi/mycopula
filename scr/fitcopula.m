@@ -1,6 +1,5 @@
 function [param1,varargout] = fitcopula(family, u)
-    numVar = size(u,2);
-     
+    numVar = size(u,2); 
     if numVar == 2
         switch lower(family)
             case 't'
@@ -58,7 +57,7 @@ function [param1,varargout] = fitcopula(family, u)
                 param1 = fitArchi(family,u);
         end
         
-    end
+    end 
 end
 
 % ---------------------------------
@@ -85,7 +84,8 @@ function param = fitArchi(family,u)
         case 'frank'
             lb = [eps];ub = [];
     end
-    [param,~,flag] = fminsearchbnd(L,[1],lb,ub); 
+    opt = optimset('Display','off');
+    [param,~,flag] = fminsearchbnd(L,[1],lb,ub,opt); 
     if ~flag;param = lb;end
     halfrot = lower(family);
     if strcmp(halfrot(end-1:end),'90') || strcmp(halfrot(end-1:end),'70')
@@ -110,7 +110,8 @@ function [param1,param2] = fitArchi2(family,u)
         case {'bb8','bb8-90','bb8-180','bb8-270'}
             lb = [1,eps]; ub = [inf,1]; 
     end
-    param = fminsearchbnd(L,[1,1],lb,ub);
+    opt = optimset('Display','off');
+    param = fminsearchbnd(L,[1,1],lb,ub,opt);
     param1 = param(1);
     param2 = param(2);
     halfrot = lower(family);
@@ -130,7 +131,8 @@ function [param1,param2,U3] = fitArchi3asim(family,u)
             case 'claytonasim'
                 lb = [eps,eps];  
         end
-        param{i} = fminsearchcon(L,[1,1],lb,ub,[1,-1],0);
+        opt = optimset('Display','off');
+        param{i} = fminsearchcon(L,[1,1],lb,ub,[1,-1],0,opt);
         NLogL(i) = L(param{i});
     end
     [~,U3] = min(NLogL);
