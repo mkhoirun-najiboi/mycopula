@@ -3,7 +3,7 @@ permalink: /
 ---
 # Getting Started
 
-mycopula is a routine in MATLAB that is prepared to carry out the computational process on copula -based modeling.
+mycopula is a routine in MATLAB that is prepared to carry out the computational process on copula-based modeling.
 
 Some of the computing processes include Marginal Distribution Fittings, Copula Function Fittings, Visualization of Two Dimensional Copulas, and Regression Process.
 
