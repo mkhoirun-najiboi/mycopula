@@ -14,8 +14,8 @@ Copulas are a powerful tool for modeling the dependence structure between random
 
 The central idea of copula theory is to separate the modeling of marginal distributions from the modeling of the joint distribution, allowing for more flexible and comprehensive descriptions of dependence patterns.
 
-**References**
-[<a id="MKN23a">1</a>] Najib, M. K., Nurdiati, S., & Sopaheluwakan, A. (2022). Copula-based joint distribution analysis of the ENSO effect on the drought indicators over Borneo fire-prone areas. _Modeling Earth Systems and Environment_, 8(2), 2817-2826.
+**References**\
+[<a id="MKN23a">1</a>] Najib, M. K., Nurdiati, S., & Sopaheluwakan, A. (2022). Copula-based joint distribution analysis of the ENSO effect on the drought indicators over Borneo fire-prone areas. _Modeling Earth Systems and Environment_, 8(2), 2817-2826.\
 [<a id="MKN23b">2</a>] Najib, M. K., Nurdiati, S., & Sopaheluwakan, A. (2022). Multivariate fire risk models using copula regression in Kalimantan, Indonesia. _Natural Hazards_, 113(2), 1263-1283.
 
 ---
