@@ -1,3 +1,21 @@
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  };
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 # Parameter Estimation
 
 The inference of functions for margins (IFM) method is the most common method used to estimate the copula parameters. In the context of copula modeling, "inference of functions for margins" refers to the process of estimating the probability distribution functions (PDFs) or cumulative distribution functions (CDFs) of individual variables (margins) within a multivariate model. This step is important because copula models typically involve two main components: the joint distribution (captured by the copula) and the marginal distributions (captured by the margins). The IFM is specifically concerned with estimating the functions that describe the individual marginal distributions.
