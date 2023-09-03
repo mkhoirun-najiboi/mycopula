@@ -3,10 +3,14 @@
     tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-      processEscapes: true,
-      tags: 'ams'
+      processEscapes: true
     }
   };
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
 </script>
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
@@ -37,9 +41,9 @@ Before defining copulas, we first define subcopulas as a certain class of ground
 > 1. Domain $C'=S_1\times S_2$ where $S_1$ and $S_2$ are subsets of $I$ containing 0 and 1;
 > 2. $C'$ is grounded and 2-increasing;
 > 3. For every $u$ in $S_1$ and every $v$ in $S_2$,
-$$\begin{align}
+\begin{align}
 C'(u,1)=u \textrm{ and } C'(1,v)=v
-\end{align}$$
+\end{align}
 
 Note that for every $(u,v)$ in Domain $C'$, $0\le C'(u,v)\le1$, so that Range $C'$ is also a subset of $I$.
 
