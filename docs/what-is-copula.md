@@ -2,6 +2,8 @@
 
 Here, we learn what is copula and the underlying concepts.
 
+1. [Definition](definition.md)
+
 ---
 [< Home](README.md)\
 [< Menu](README.md#menu)\

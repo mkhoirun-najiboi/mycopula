@@ -16,7 +16,9 @@ The copula functions used are Gaussian, t-student, Gumbel, Frank, Clayton, Joe, 
 
 ## Menu
 
-- [What is copula?](sec1.md)
+1. [What is copula?](what-is-copula.md)
+    - [Definition](definition.md)
+    - [Advantage and Disadvantage](advantage.md)
 
 ---
 [< Home](README.md)\
