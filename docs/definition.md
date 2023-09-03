@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/contrib/auto-render.min.js"></script>
+
 # Definition of Copula
 
 A copula is a statistical concept used in probability theory and multivariate statistics to describe the dependence structure between random variables. It is particularly useful when dealing with complex, high-dimensional data where the relationships between variables are not easily described by traditional methods. Copulas have applications in fields such as finance, economics, and environmental science [[1](#MKN23a),[2](#MKN23b)], among others.
@@ -85,3 +89,7 @@ This theorem first appeared in [[4](#Sklar)]. The name “copula” was chosen t
 [< Menu](README.md#menu)\
 Visit my blog: [emkanajib](https://emkanajib.blogspot.com/)\
 @ 2021-2023 Mohamad Khoirun Najib
+
+<script>
+  renderMathInElement(document.body);
+</script>
