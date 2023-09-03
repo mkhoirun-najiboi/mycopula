@@ -1,14 +1,12 @@
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    extensions: ["tex2jax.js"],
-    jax: ["input/TeX", "output/HTML-CSS"],
+<script type="text/javascript">
+  window.MathJax = {
     tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
       tags: 'ams'
-    },
-    "HTML-CSS": { fonts: ["TeX"] }
-  });
+    }
+  };
 </script>
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
