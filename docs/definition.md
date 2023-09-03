@@ -5,7 +5,7 @@
     tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-      processEscapes: true
+      tags: 'ams'
     },
     "HTML-CSS": { fonts: ["TeX"] }
   });
