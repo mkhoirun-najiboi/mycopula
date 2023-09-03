@@ -1,3 +1,8 @@
+---
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+---
 # Definition of Copula
 
 A copula is a statistical concept used in probability theory and multivariate statistics to describe the dependence structure between random variables. It is particularly useful when dealing with complex, high-dimensional data where the relationships between variables are not easily described by traditional methods. Copulas have applications in fields such as finance, economics, and environmental science [[1](#MKN23a),[2](#MKN23b)], among others.
