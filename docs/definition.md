@@ -68,7 +68,7 @@ $$
 
 > **Proposition 1**: The horizontal, vertical, and diagonal sections of a copula $C$ are all nondecreasing and uniformly continuous on $I$.
 
-For more details about the definition and basic properties of copula, you can read the textbook [[3](#nelsen)].
+For more details about the definition and basic properties of copula, you can read the textbook [[3](#Nelsen)].
 
 ## Sklar's Theorem
 This theorem is central to the theory of copulas and is the foundation of many, if not most, of the applications of that theory to statistics. Sklar’s theorem elucidates the role that copulas play in the relationship between multivariate distribution functions and their univariate margins. Thus we begin this section with a short discussion of distribution functions.
@@ -101,5 +101,7 @@ This theorem first appeared in [[4](#Sklar)]. The name “copula” was chosen t
 ---
 [< Home](README.md)\
 [< Menu](README.md#menu)\
-Visit my blog: [emkanajib](https://emkanajib.blogspot.com/)\
+[**View on Github**](https://github.com/mkhoirun-najiboi/mycopula)
+
+[Visit my personal blog](https://emkanajib.blogspot.com/)\
 @ 2021-2023 Mohamad Khoirun Najib
