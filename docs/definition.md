@@ -27,9 +27,9 @@ Before defining copulas, we first define subcopulas as a certain class of ground
 > 1. Domain \(C'=S_1\times S_2\) where \(S_1\) and \(S_2\) are subsets of \(I\) containing 0 and 1;
 > 2. \(C'\) is grounded and 2-increasing;
 > 3. For every \(u\) in \(S_1\) and every \(v\) in \(S_2\),
-$$\begin{align}
+\[\begin{align}
 C'(u,1)=u \textrm{ and } C'(1,v)=v
-\end{align}$$
+\end{align}\]
 
 Note that for every \((u,v)\) in Domain \(C'\), \(0\le C'(u,v)\le1\), so that Range \(C'\) is also a subset of \(I\).
 
@@ -38,19 +38,19 @@ Note that for every \((u,v)\) in Domain \(C'\), \(0\le C'(u,v)\le1\), so that Ra
 Equivalently, a copula is a function \(C\) from \(I^2\) to \(I\) with the following properties:
 
 1. For every \(u, v\) in \(I\),
-$$\begin{align}
+\[\begin{align}
 C(u,0)=C(0,v)=0
-\end{align}$$
+\end{align}\]
 and
-$$\begin{align}
+\[\begin{align}
 C(u,1)=u \textrm{ and } C(1,v)=v
-\end{align}$$
+\end{align}\]
 2. For every \(u_1, u_2, v_1, v_2\) in \(I\) such that \(u_1\le u_2\) and \(v_1\le v_2\),
-$$
+\[
 \begin{align}
 C(u_2,v_2)-C(u_1,v_2)-C(u_2,v_1)+C(u_1,v_1)\ge0
 \end{align}
-$$
+\]
 
 > **Proposition 1**: The horizontal, vertical, and diagonal sections of a copula \(C\) are all nondecreasing and uniformly continuous on \(I\).
 
@@ -70,11 +70,11 @@ This theorem is central to the theory of copulas and is the foundation of many, 
 Thus \(F_{XY}\) is grounded, and because Domain \(H = \bar{R}^2\) , \(F_{XY}\) has margins \(F_X\) and \(F_Y\) given by \(F_X(x) = F_{XY}(x,\infty)\) and \(F_Y(y) = F_{XY}(\infty,y)\). By virtue of _Proposition 1_, \(F_X\) and \(F_Y\) are distribution functions.
 
 > **Theorem 1 (Sklar's theorem)**: Let \(F_{XY}\) be a joint distribution function with margins \(F_X\) and \(F_Y\). Then there exists a copula \(C\) such that for all \(x,y\) in \(\bar{R}\),
-$$
+\[
 \begin{align}
 F_{XY} = C(F_X(x),F_Y(y))
 \end{align}
-$$
+\]
 
 This theorem first appeared in [[4](#Sklar)]. The name “copula” was chosen to emphasize the manner in which a copula “couples” a joint distribution function to its univariate margins.
 
