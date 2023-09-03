@@ -31,18 +31,18 @@ $$
 where $\hat{\alpha}$ is the estimated parameter of $\alpha$, and $f_i$ is the probability density function (PDF) of $X_i$ for $i = 1, 2$. The marginal distribution functions used are
 
 - Continuous:
-    1. [Extreme Value](https://www.mathworks.com/help/stats/extreme-value-distribution.html),
-    2. [Generalized Extreme Value](https://www.mathworks.com/help/stats/generalized-extreme-value-distribution.html),
-    3. [Logistic](https://www.mathworks.com/help/stats/logistic-distribution.html),
-    4. [Normal](https://www.mathworks.com/help/stats/normal-distribution.html),
-    5. [Exponential](https://www.mathworks.com/help/stats/exponential-distribution.html),
-    6. [Gamma](https://www.mathworks.com/help/stats/gamma-distribution.html),
-    7. [Inverse Gaussian](https://www.mathworks.com/help/stats/inverse-gaussian-distribution.html),
-    8. [Log logistic](https://www.mathworks.com/help/stats/loglogistic-distribution.html),
-    9. [Lognormal](https://www.mathworks.com/help/stats/lognormal-distribution.html), and
-    10. [Weibull](https://www.mathworks.com/help/stats/weibull-distribution.html) distributions.
+    - [Extreme Value](https://www.mathworks.com/help/stats/extreme-value-distribution.html),
+    - [Generalized Extreme Value](https://www.mathworks.com/help/stats/generalized-extreme-value-distribution.html),
+    - [Logistic](https://www.mathworks.com/help/stats/logistic-distribution.html),
+    - [Normal](https://www.mathworks.com/help/stats/normal-distribution.html),
+    - [Exponential](https://www.mathworks.com/help/stats/exponential-distribution.html),
+    - [Gamma](https://www.mathworks.com/help/stats/gamma-distribution.html),
+    - [Inverse Gaussian](https://www.mathworks.com/help/stats/inverse-gaussian-distribution.html),
+    - [Log logistic](https://www.mathworks.com/help/stats/loglogistic-distribution.html),
+    - [Lognormal](https://www.mathworks.com/help/stats/lognormal-distribution.html), and
+    - [Weibull](https://www.mathworks.com/help/stats/weibull-distribution.html) distributions.
 - Discrete:
-    1. [Negative Binomial](https://www.mathworks.com/help/stats/negative-binomial-distribution.html) distribution.
+    - [Negative Binomial](https://www.mathworks.com/help/stats/negative-binomial-distribution.html) distribution.
 
 The fittest marginal univariate distribution is selected on the basis of
 
