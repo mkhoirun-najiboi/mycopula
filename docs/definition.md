@@ -41,9 +41,9 @@ Before defining copulas, we first define subcopulas as a certain class of ground
 > 1. Domain $C'=S_1\times S_2$ where $S_1$ and $S_2$ are subsets of $I$ containing 0 and 1;
 > 2. $C'$ is grounded and 2-increasing;
 > 3. For every $u$ in $S_1$ and every $v$ in $S_2$,
-\begin{align}
+$$\begin{align}
 C'(u,1)=u \textrm{ and } C'(1,v)=v
-\end{align}
+\end{align}$$
 
 Note that for every $(u,v)$ in Domain $C'$, $0\le C'(u,v)\le1$, so that Range $C'$ is also a subset of $I$.
 
@@ -95,7 +95,7 @@ This theorem first appeared in [[4](#Sklar)]. The name “copula” was chosen t
 **References**\
 [<a id="MKN23a">1</a>] Najib, M. K., Nurdiati, S., & Sopaheluwakan, A. (2022). Copula-based joint distribution analysis of the ENSO effect on the drought indicators over Borneo fire-prone areas. _Modeling Earth Systems and Environment_, 8(2), 2817-2826.\
 [<a id="MKN23b">2</a>] Najib, M. K., Nurdiati, S., & Sopaheluwakan, A. (2022). Multivariate fire risk models using copula regression in Kalimantan, Indonesia. _Natural Hazards_, 113(2), 1263-1283.\
-[<a id="Nelsen">3</a>] Nelsen, R. B. (2006). _An introduction to copulas_. Springer.
+[<a id="Nelsen">3</a>] Nelsen, R. B. (2006). _An introduction to copulas_. Springer.\
 [<a id="Sklar">4</a>] Sklar, M. (1959). Fonctions de Répartition àn Dimensions et Leurs Marges. _Publ L’institut Stat L’université Paris_, 8, 229–231.
 
 ---
