@@ -1,5 +1,16 @@
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script type="text/javascript" src="path-to-MathJax/MathJax.js">
 </script>
 
 # Definition of Copula
@@ -37,14 +48,20 @@ Note that for every $(u,v)$ in Domain $C'$, $0\le C'(u,v)\le1$, so that Range $C
 
 Equivalently, a copula is a function $C$ from $I^2$ to $I$ with the following properties:
 
-1. For every $u, v$ in $I$,\
-$C(u,0)=C(0,v)=0$\
-and\
-$C(u,1)=u$ and $C(1,v)=v$
-2. For every $u_1, u_2, v_1, v_2$ in $I$ such that $u_1\le u_2$ and $v_1\le v_2$,\
-$
-C(u_2,v_2)-C(u_1,v_2)-C(u_2,v_1)+C(u_1,v_1)\ge0 
-$
+1. For every $u, v$ in $I$,
+$$\begin{align}
+C(u,0)=C(0,v)=0
+\end{align}$$
+and
+$$\begin{align}
+C(u,1)=u \textrm{ and } C(1,v)=v
+\end{align}$$
+2. For every $u_1, u_2, v_1, v_2$ in $I$ such that $u_1\le u_2$ and $v_1\le v_2$,
+$$
+\begin{align}
+C(u_2,v_2)-C(u_1,v_2)-C(u_2,v_1)+C(u_1,v_1)\ge0
+\end{align}
+$$
 
 > **Proposition 1**: The horizontal, vertical, and diagonal sections of a copula $C$ are all nondecreasing and uniformly continuous on $I$.
 
@@ -63,17 +80,19 @@ This theorem is central to the theory of copulas and is the foundation of many, 
 
 Thus $F_{XY}$ is grounded, and because Domain $H = \bar{R}^2$ , $F_{XY}$ has margins $F_X$ and $F_Y$ given by $F_X(x) = F_{XY}(x,\infty)$ and $F_Y(y) = F_{XY}(\infty,y)$. By virtue of _Proposition 1_, $F_X$ and $F_Y$ are distribution functions.
 
-> **Theorem 1 (Sklar's theorem)**: Let $F_{XY}$ be a joint distribution function with margins $F_X$ and $F_Y$. Then there exists a copula $C$ such that for all $x,y$ in $\bar{R}$,\
-$
+> **Theorem 1 (Sklar's theorem)**: Let $F_{XY}$ be a joint distribution function with margins $F_X$ and $F_Y$. Then there exists a copula $C$ such that for all $x,y$ in $\bar{R}$,
+$$
+\begin{align}
 F_{XY} = C(F_X(x),F_Y(y))
-$
+\end{align}
+$$
 
 This theorem first appeared in [[4](#Sklar)]. The name “copula” was chosen to emphasize the manner in which a copula “couples” a joint distribution function to its univariate margins.
 
 **References**\
 [<a id="MKN23a">1</a>] Najib, M. K., Nurdiati, S., & Sopaheluwakan, A. (2022). Copula-based joint distribution analysis of the ENSO effect on the drought indicators over Borneo fire-prone areas. _Modeling Earth Systems and Environment_, 8(2), 2817-2826.\
 [<a id="MKN23b">2</a>] Najib, M. K., Nurdiati, S., & Sopaheluwakan, A. (2022). Multivariate fire risk models using copula regression in Kalimantan, Indonesia. _Natural Hazards_, 113(2), 1263-1283.\
-[<a id="Nelsen">3</a>] Nelsen, R. B. (2006). _An introduction to copulas_. Springer.\
+[<a id="Nelsen">3</a>] Nelsen, R. B. (2006). _An introduction to copulas_. Springer.
 [<a id="Sklar">4</a>] Sklar, M. (1959). Fonctions de Répartition àn Dimensions et Leurs Marges. _Publ L’institut Stat L’université Paris_, 8, 229–231.
 
 ---
