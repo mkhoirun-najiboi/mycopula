@@ -99,8 +99,8 @@ This theorem first appeared in [[4](#Sklar)]. The name “copula” was chosen t
 [<a id="Sklar">4</a>] Sklar, M. (1959). Fonctions de Répartition àn Dimensions et Leurs Marges. _Publ L’institut Stat L’université Paris_, 8, 229–231.
 
 ---
-[< Home](README.md)\
-[< Menu](README.md#menu)\
+[< Home](home.md)\
+[< Menu](home.md#menu)\
 [**View on Github**](https://github.com/mkhoirun-najiboi/mycopula)
 
 [Visit my personal blog](https://emkanajib.blogspot.com/)\

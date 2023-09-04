@@ -1,4 +1,4 @@
-function c = cdfcopula(family,u,param1,param2,U3)
+function c = cdfcopula(family,u,param1,param2)
     if nargin<3
         error('Jumlah input tidak sesuai')
     end
@@ -77,12 +77,6 @@ function c = cdfcopula(family,u,param1,param2,U3)
                 c = u(:,1)+u(:,2)-1+copulacdf('gumbel',[1-u(:,1),1-u(:,2)],param1);
             case 'gumbel-270'
                 c = u(:,1)-copulacdf('gumbel',[u(:,1),1-u(:,2)],-param1);
-            case 'frank-90'
-                c = u(:,2)-copulacdf('frank',[1-u(:,1),u(:,2)],-param1);
-            case 'frank-180'
-                c = u(:,1)+u(:,2)-1+copulacdf('frank',[1-u(:,1),1-u(:,2)],param1);
-            case 'frank-270'
-                c = u(:,1)-copulacdf('frank',[u(:,1),1-u(:,2)],-param1);
             otherwise
                 c = copulacdf(family,u,param1);
         end
@@ -96,10 +90,6 @@ function c = cdfcopula(family,u,param1,param2,U3)
                 c = cdfClayton(u,param1);
             case 'gumbel'
                 c = cdfGumbel(u,param1);
-            case 'gumbelasim'
-                c = cdfGumbelAsim(u,param1,param2,U3);
-            case 'claytonasim'
-                c = cdfClaytonAsim(u,param1,param2,U3);
             case 'frank'
                 c = cdfFrank(u,param1);
             case 'joe'
@@ -124,47 +114,6 @@ function c = cdfGumbel(u,param)
     u3 = u(:,3); 
     w = (-log(u1)).^param + (-log(u2)).^param + (-log(u3)).^param; 
     c = exp(-w.^(1/param));
-end
-
-function c = cdfGumbelAsim(u,theta1,theta2,U3)
-    switch U3
-        case 1
-            u1 = u(:,2);
-            u2 = u(:,3);
-            u3 = u(:,1);
-        case 2
-            u1 = u(:,1);
-            u2 = u(:,3);
-            u3 = u(:,2);
-        case 3
-            u1 = u(:,1);
-            u2 = u(:,2);
-            u3 = u(:,3);
-    end
-    w1 = (-log(u1)).^theta2;
-    w2 = (-log(u2)).^theta2;
-    w3 = (-log(u3)).^theta1;
-    c1 = (w1+w2).^(theta1/theta2) + w3;
-    c = exp(-(c1.^(1/theta1)));
-end
-
-function c = cdfClaytonAsim(u,theta1,theta2,U3)
-    switch U3
-        case 1
-            u1 = u(:,2);
-            u2 = u(:,3);
-            u3 = u(:,1);
-        case 2
-            u1 = u(:,1);
-            u2 = u(:,3);
-            u3 = u(:,2);
-        case 3
-            u1 = u(:,1);
-            u2 = u(:,2);
-            u3 = u(:,3);
-    end 
-    c1 = (u1.^(-theta2)+u2.^(-theta2)-1).^(theta1/theta2);
-    c = (c1+u3.^(-theta1)-1).^(-1/theta1);
 end
 
 function c = cdfFrank(u,param)

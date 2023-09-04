@@ -7,8 +7,8 @@ Here, we learn what is copula and the underlying concepts.
 3. [Parameter Estimation Method](parameter.md)
 
 ---
-[< Home](README.md)\
-[< Menu](README.md#menu)\
+[< Home](home.md)\
+[< Menu](home.md#menu)\
 [**View on Github**](https://github.com/mkhoirun-najiboi/mycopula)
 
 [Visit my personal blog](https://emkanajib.blogspot.com/)\

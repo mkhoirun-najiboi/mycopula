@@ -91,8 +91,8 @@ For more details, read article [[3](#Najib)].
 [<a id="Najib">3</a>] Najib, M. K., Nurdiati, S., & Sopaheluwakan, A. (2022). Multivariate fire risk models using copula regression in Kalimantan, Indonesia. _Natural Hazards_, 113(2), 1263-1283.
 
 ---
-[< Home](README.md)\
-[< Menu](README.md#menu)\
+[< Home](home.md)\
+[< Menu](home.md#menu)\
 [**View on Github**](https://github.com/mkhoirun-najiboi/mycopula)
 
 [Visit my personal blog](https://emkanajib.blogspot.com/)\

@@ -35,8 +35,8 @@ While copulas offer many advantages for modeling dependence between random varia
 While copulas are a valuable tool for modeling dependence structures in various fields, they are not without limitations. Users should be aware of these disadvantages and carefully consider whether copula modeling is appropriate for their specific data and research objectives. It's often advisable to complement copula analysis with other statistical methods and sensitivity analyses to ensure the robustness of results.
 
 ---
-[< Home](README.md)\
-[< Menu](README.md#menu)\
+[< Home](home.md)\
+[< Menu](home.md#menu)\
 [**View on Github**](https://github.com/mkhoirun-najiboi/mycopula)
 
 [Visit my personal blog](https://emkanajib.blogspot.com/)\

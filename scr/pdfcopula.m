@@ -1,4 +1,4 @@
-function c = pdfcopula(family,u,param1,param2,U3)
+function c = pdfcopula(family,u,param1,param2)
     if nargin<3
         error('Jumlah input tidak sesuai')
     end
@@ -77,12 +77,6 @@ function c = pdfcopula(family,u,param1,param2,U3)
                 c = copulapdf('gumbel',[1-u(:,1),1-u(:,2)],param1);
             case 'gumbel-270'
                 c = copulapdf('gumbel',[u(:,1),1-u(:,2)],-param1);
-            case 'frank-90'
-                c = copulapdf('frank',[1-u(:,1),u(:,2)],-param1);
-            case 'frank-180'
-                c = copulapdf('frank',[1-u(:,1),1-u(:,2)],param1);
-            case 'frank-270'
-                c = copulapdf('frank',[u(:,1),1-u(:,2)],-param1);
             otherwise
                 c = copulapdf(family,u,param1);
         end
@@ -97,10 +91,6 @@ function c = pdfcopula(family,u,param1,param2,U3)
                 c = pdfClayton(u,param1);
             case 'gumbel'
                 c = pdfGumbel(u,param1);
-            case 'gumbelasim'
-                c = pdfGumbelAsim(u,param1,param2,U3);
-            case 'claytonasim'
-                c = pdfClaytonAsim(u,param1,param2,U3);
             case 'frank'
                 c = pdfFrank(u,param1);
             case 'joe'
@@ -130,66 +120,6 @@ function c = pdfGumbel(u,param)
         (w.^(3/param-3) + (3*param - 3).* w.^(2/param - 3) + (param - 1).*(2*param-1).*w.^(1/param-3));
     y = u1.*u2.*u3;
     c = x./y;
-end
-
-function c = pdfGumbelAsim(U,param1,param2,U3)
-    switch U3
-        case 1
-            u = U(:,2);
-            v = U(:,3);
-            w = U(:,1);
-        case 2
-            u = U(:,1);
-            v = U(:,3);
-            w = U(:,2);
-        case 3
-            u = U(:,1);
-            v = U(:,2);
-            w = U(:,3);
-    end
-    c = (1./(u.* v.* w)).*exp(-(((-log(u)).^param2 + (-log(v)).^param2).^(param1./param2) + ...
-        (-log(w)).^param1).^((1./param1))).* (-log(u)).^(-1 + param2).* ((-log(u)).^param2 + ...
-        (-log(v)).^param2).^(-2 + param1./param2).* (-log(v)).^(-1 + param2).*...
-        (((-log(u)).^param2 + (-log(v)).^param2).^(param1./param2).* (1 - 3.* ...
-        (((-log(u)).^param2 + (-log(v)).^param2).^(param1./param2) + ...
-        (-log(w)).^param1).^(1./param1) + (((-log(u)).^param2 + (-log(v)).^param2).^(param1./param2) + ...
-        (-log(w)).^param1).^(2./param1)) +  param1.^2.* (((-log(u)).^param2 + ...
-        (-log(v)).^param2).^(param1./param2) - (-log(w)).^param1) + param1.* (-1 + ...
-        (((-log(u)).^param2 + (-log(v)).^param2).^(param1./param2) + (-log(w)).^param1).^(1./param1)).* ...
-        (2.* ((-log(u)).^param2 + (-log(v)).^param2).^(param1./param2) - ...
-        (-log(w)).^param1) + param1.* param2.* (((-log(u)).^param2 + ...
-        (-log(v)).^param2).^(param1./param2) + (-log(w)).^param1) + ...
-        param2.* (-1 + (((-log(u)).^param2 + (-log(v)).^param2).^(param1./param2) + ...
-        (-log(w)).^param1).^(1./param1)).* (((-log(u)).^param2 + ...
-        (-log(v)).^param2).^(param1./param2) + (-log(w)).^param1)).* ...
-        (((-log(u)).^param2 + (-log(v)).^param2).^(param1./param2) + ...
-        (-log(w)).^param1).^(-3 + 1./param1).* (-log(w)).^(-1 + param1);
-end
-
-function c = pdfClaytonAsim(U,theta1,theta2,U3)
-    switch U3
-        case 1
-            u = U(:,2);
-            v = U(:,3);
-            w = U(:,1);
-        case 2
-            u = U(:,1);
-            v = U(:,3);
-            w = U(:,2);
-        case 3
-            u = U(:,1);
-            v = U(:,2);
-            w = U(:,3);
-    end
-    c = ((1 + theta1).*u.^(-1 + theta2).*v.^(-1 + theta2).*(-1 + u.^-theta2 + ...
-        v.^-theta2).^(theta1./theta2).* w.^(-1 + theta1).*(-1 + (-1 + u.^-theta2 + ...
-        v.^-theta2).^(theta1./theta2) +  w.^-theta1).^(-1./theta1).*(theta2 - ...
-        theta2.*w.^theta1 + (-1 + u.^-theta2 + v.^-theta2).^(theta1/theta2).*...
-        w.^theta1 + theta2.*(-1 + u.^-theta2 + v.^-theta2).^(theta1/theta2).*...
-        w.^theta1 + theta1.*(-1 + (1 + (-1 + u.^-theta2 + v.^-theta2).^...
-        (theta1/theta2)).* w.^theta1)))./((v.^theta2 - u.^theta2.* ...
-        (-1 + v.^theta2)).^2 .*(1 + (-1 + (-1 + u.^-theta2 + ...
-        v.^-theta2).^(theta1/theta2)).* w.^theta1).^3); 
 end
 
 function c = pdfFrank(U,param)

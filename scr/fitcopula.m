@@ -31,14 +31,6 @@ function [param1,varargout] = fitcopula(family, u)
             case 'gumbel-270'
                 param1 = copulafit('gumbel',[u(:,2),1-u(:,1)]);
                 param1 = -param1;
-            case 'frank-90'
-                param1 = copulafit('frank',[1-u(:,2),u(:,1)]);
-                param1 = -param1;
-            case 'frank-180'
-                param1 = copulafit('frank',[1-u(:,1),1-u(:,2)]);
-            case 'frank-270'
-                param1 = copulafit('frank',[u(:,2),1-u(:,1)]);
-                param1 = -param1;
             otherwise
                 param1 = copulafit(family,u);
         end
@@ -49,10 +41,6 @@ function [param1,varargout] = fitcopula(family, u)
             case 't'
                 [param1,param2] = copulafit(family,u);
                 varargout(1) = {param2};
-            case {'gumbelasim','claytonasim'}
-                [param1,param2,U3] = fitArchi3asim(family,u);
-                varargout(1) = {param2};
-                varargout(2) = {U3};
             otherwise
                 param1 = fitArchi(family,u);
         end
@@ -119,24 +107,4 @@ function [param1,param2] = fitArchi2(family,u)
         param1 = -param(1);
         param2 = -param(2);
     end
-end 
-    
-function [param1,param2,U3] = fitArchi3asim(family,u)
-    for i = 1:3
-        L = @(param) -log(prod(pdfcopula(family,u,param(1),param(2),i)));
-        lb = []; ub = [];
-        switch lower(family)  
-            case 'gumbelasim'
-                lb = [1,1];   
-            case 'claytonasim'
-                lb = [eps,eps];  
-        end
-        opt = optimset('Display','off');
-        param{i} = fminsearchcon(L,[1,1],lb,ub,[1,-1],0,opt);
-        NLogL(i) = L(param{i});
-    end
-    [~,U3] = min(NLogL);
-    param = param{U3};
-    param1 = param(1);
-    param2 = param(2);
-end 
+end

@@ -144,8 +144,8 @@ pd = PD{1};
 stat = D(1);
 
 if verbosity
-    disp(['domain = ',domain])
-    disp(['sort by = ',sortname]) 
+    disp(['Domain = ',domain])
+    disp(['Sort by = ',sortname]) 
     disp(['fittest distribution = ',pd.DistributionName])
     paramvalue = '';
     for i = 1:length(pd.ParameterNames)
@@ -154,8 +154,8 @@ if verbosity
             paramvalue = [paramvalue,', '];
         end
     end
-    disp(['Parameters = ',paramvalue])
-    fprintf('Decision = %s (AD pval=%.4f)\n',D(1).Decision,D(1).ADpval)
+    disp(['Parameters: ',paramvalue])
+    fprintf('Decision: %s (AD pval=%.4f)\n',D(1).Decision,D(1).ADpval)
     if verbosity>1
         disp(['Summary = '])
         disp(' ')
@@ -171,6 +171,7 @@ if plotpdf
     xfig = linspace(hh.BinLimits(1),hh.BinLimits(2),100);
     hold on 
     plot(xfig,pdf(pd,xfig),'linewidth',1.2)
+    legend('Empirical','Theoretical')
     xlabel('x')
     ylabel('pdf')
 end
