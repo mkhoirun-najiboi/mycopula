@@ -10,6 +10,7 @@ y = stocks(:,2);
 ```
 
 ```plaintext
+# ===== OUTPUT ======
 Marginal: X
 Domain = Real
 Sort by = Anderson-Darling Stastistics
@@ -51,6 +52,7 @@ y = y(:);
 ```
 
 ```plaintext
+# ===== OUTPUT ======
 Marginal: X
 Domain = Real
 Sort by = Anderson-Darling Stastistics

@@ -1,3 +1,21 @@
+<script type="text/javascript">
+  window.MathJax = {
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  };
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 # Fitting Bivariate Copula
 
 Now let's start with the most basic thing which is how to fit the bivariate copula.
@@ -29,6 +47,7 @@ F1 = fitter(x1);
 ```
 
 ```plaintext
+# ===== OUTPUT ======
 Domain = Real
 Sort by = Anderson-Darling Stastistics
 fittest distribution = Logistic
@@ -41,6 +60,7 @@ F2 = fitter(x2);
 ```
 
 ```plaintext
+# ===== OUTPUT ======
 Domain = Real
 Sort by = Anderson-Darling Stastistics
 fittest distribution = Generalized Extreme Value
@@ -76,6 +96,7 @@ C = copfitter([u1,u2],'verbosity',3);
 ```
 
 ```plaintext
+# ===== OUTPUT ======
 Case = Bivariate
 Sort by = Akaike Information Criterion
 Fittest copula = Gaussian
