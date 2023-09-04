@@ -50,7 +50,7 @@ end
 xx = xpred;
 
 teks = '';
-fprintf('\n\n')
+fprintf('\n')
 for k = 1:length(xx)
     u = [cdf(f,repmat(xx(k),length(yy),1)),cdf(g,yy(:))];
     cond_prob = c(u).*pdf(g,yy)';
@@ -85,7 +85,7 @@ end
 
 [~,ii] = sort(xx);
 figure()
-hold on
+hold on; box on
 plot(x,y,'ko')
 plot(xx(ii),yhat(ii),'-r','linewidth',2.7)
 plot(xx(ii),CI(ii,1),'-b','linewidth',1.2)

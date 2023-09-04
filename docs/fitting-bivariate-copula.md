@@ -27,17 +27,20 @@ The following is a selected distribution of data `X1` and `X2`.
 ```matlab
 F1 = fitter(x1);
 ```
-```
+
+```plaintext
 Domain = Real
 Sort by = Anderson-Darling Stastistics
 fittest distribution = Logistic
 Parameters: mu = -0.19364, sigma = 0.58158
 Decision: fails to reject h0 (AD pval=0.9990)
 ```
+
 ```matlab
 F2 = fitter(x2);
 ```
-```
+
+```plaintext
 Domain = Real
 Sort by = Anderson-Darling Stastistics
 fittest distribution = Generalized Extreme Value
@@ -51,17 +54,28 @@ fitter(x1,'verbosity',0,'plotpdf',1);
 ```
 <img width=500px src="img/pdfex1.jpg">
 
-**Probability Transformation**
+**Probability Transformation**\
+From the selected distribution function, the initial variable is transformed into a $\text{uniform}\sim(0,1)$ distribution.
 ```matlab
 u1 = cdf(F1,x1);
 u2 = cdf(F2,x2);
 ```
 
 ## Copula Fitting
+
+The second step in the IFM method is to fit the copula function using transformed variables. This is provided by the `copfitter` function.
+
+- `copfitter(U)` returns the fittest copula of the matrix composed of the column vectors of the transformed variables. In the bivariate case, `U` can be written as `[u1,u2]`.
+- `copfitter(U,'sortby','value')` returns the fittest copula, based on the `sortby` measurement. `'value'` can be `'aic'` (_default_), `'rmse'`, or `'cvm'`.
+- `copfitter(U,'verbosity',value)` returns the fittest copula, with printing information about the fitting process. `value` can be 0 (prints no information), 1 (prints selected distribution information, _default_), 2 (prints top five copulas information), or 3 (prints full information).
+
+This is an example of fitting a copula from a previously obtained variable.
+
 ```matlab
 C = copfitter([u1,u2],'verbosity',3);
 ```
-```
+
+```plaintext
 Case = Bivariate
 Sort by = Akaike Information Criterion
 Fittest copula = Gaussian

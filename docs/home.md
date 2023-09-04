@@ -22,8 +22,10 @@ The copula functions used are Gaussian, t-student, Gumbel, Frank, Clayton, Joe, 
     - [Parameter Estimation Method](parameter.md)
 2. [Bivariate Case](bivariate.md)
     - [Fitting Bivariate Copula](fitting-bivariate-copula.md)
-    - Joint Probability Density Function and Its Visualization
-    - Copula Regression (One predictor)
+    - [Joint Probability Density Function and Its Visualization](joint-pdf.md)
+    - [Copula Regression (One predictor)](copula-regression-one-predictor.md)
+3. [Trivariate Case](trivariate.md)
+    - Symmetric 3-copula
 
 ## Download
 

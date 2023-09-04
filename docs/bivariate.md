@@ -1,8 +1,8 @@
 # Bivariate Case
   
 - [Fitting Bivariate Copula](fitting-bivariate-copula.md)
-- Joint Probability Density Function and Its Visualization
-- Copula Regression (One predictor)
+- [Joint Probability Density Function and Its Visualization](joint-pdf.md)
+- [Copula Regression (One predictor)](copula-regression-one-predictor.md)
 
 ---
 [< Home](home.md)\

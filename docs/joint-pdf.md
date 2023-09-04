@@ -1,18 +1,19 @@
-%% Joint Probability Density Function and Its Visualization
-clear;clc
-close all
+# Joint Probability Density Function and Its Visualization
 
-%% Load data
+```matlab
 load stockreturns
 X1 = stocks(:,1);
 X2 = stocks(:,2);
+```
 
+```matlab
 %% Fitting Copula
 F1 = fitter(X1); U1 = cdf(F1,X1);
 F2 = fitter(X2); U2 = cdf(F2,X2); 
 C = copfitter([U1,U2]);
+```
 
-%%
+```matlab
 x1 = 0:0.01:1;
 x2 = 0:0.01:1;
 [u1,u2] = meshgrid(x1,x2);
@@ -29,3 +30,16 @@ colorbar
 plot(X1,X2,'k*')
 xlabel('X1')
 ylabel('X2')
+```
+<img width=500px src="img/jpdfex1.jpg">
+
+**Download**: this example is available on `demo2.m`. [Visit Github](https://github.com/mkhoirun-najiboi/mycopula)
+
+
+---
+[< Home](home.md)\
+[< Menu](home.md#menu)\
+[**View on Github**](https://github.com/mkhoirun-najiboi/mycopula)
+
+[Visit my personal blog](https://emkanajib.blogspot.com/)\
+@ 2021-2023 Mohamad Khoirun Najib
