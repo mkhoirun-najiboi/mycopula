@@ -7,7 +7,6 @@ X2 = stocks(:,2);
 ```
 
 ```matlab
-%% Fitting Copula
 F1 = fitter(X1); U1 = cdf(F1,X1);
 F2 = fitter(X2); U2 = cdf(F2,X2); 
 C = copfitter([U1,U2]);
