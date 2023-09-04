@@ -5,6 +5,8 @@ permalink: /
 
 mycopula is a routine in MATLAB that is prepared to carry out the computational process on copula-based modeling.
 
+mycopula provides a very easy way to estimate copula parameters and calculate joint PDF and CDF.
+
 Some of the computing processes include Marginal Distribution Fittings, Copula Function Fittings, Visualization of Two Dimensional Copulas, and Regression Process.
 
 The marginal distribution functions used are
@@ -31,7 +33,7 @@ The copula functions used are Gaussian, t-student, Gumbel, Frank, Clayton, Joe, 
 
 ## Download
 
-Download the package for MATLAB [**here**](#) or [visit GitHub](https://github.com/mkhoirun-najiboi/mycopula)
+Download the package for MATLAB [**here**](https://github.com/mkhoirun-najiboi/mycopula/archive/refs/heads/main.zip) or [visit GitHub](https://github.com/mkhoirun-najiboi/mycopula)
 
 ---
 [< Home](home.md)\
