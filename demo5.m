@@ -1,9 +1,11 @@
+%% Symmetric Trivariate - Regression
 clear;clc
 close all
+addpath('scr')
 
 load stockreturns
+x = stocks(:,2:3);
+y = stocks(:,1);
 
-x = stocks(:,1:8);
-
-C = nestedfit(x);
+yhat = copreg(x,y,'xpred',x,'ypred',y,'method','Symmetric');
 

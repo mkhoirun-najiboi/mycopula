@@ -29,3 +29,9 @@ u2 = cdf(F2,x2);
 
 %% Fitting copula function
 C = copfitter([u1,u2],'verbosity',3);
+
+%% One line code
+clc
+load stockreturns
+x = stocks(:,1:2);
+C = bivariatefit(x);

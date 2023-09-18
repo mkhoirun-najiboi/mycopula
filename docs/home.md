@@ -16,20 +16,38 @@ The marginal distribution functions used are
 
 The copula functions used are Gaussian, t-student, Gumbel, Frank, Clayton, Joe, Galambos, BB1, BB6, BB7, and BB8.
 
+## List of Functions
+
+|Function|Description|
+|:-|:-|
+|`fitter`|fitting marginal distribution|
+|`copfitter`|fitting copula using transformed variables|
+|`bivariatefit`|one-line code for fitting bivariate copula|
+|`symmetricfit`|one-line code for fitting trivariate copula|
+|`nestedfit`|one-line code for fitting high-dimensional copula via nested structures|
+|`biplot`|plot joint PDF via bivariate copula|
+|`jointcdf`|compute the joint CDF using fitted copula|
+|`jointpdf`|compute the joint PDF using fitted copula|
+|`copreg`|Perform copula regression with different copula fitting approach|
+
 ## Menu
 
 1. [What is copula?](what-is-copula.md)
     - [Definition of Copula and Sklar's Theorem](definition.md)
     - [Advantage and Disadvantage](advantage.md)
     - [Parameter Estimation Method](parameter.md)
-2. [Bivariate Case](bivariate.md)
-    - [Fitting Bivariate Copula](fitting-bivariate-copula.md)
+2. Bivariate Case
+    - [Fitting Bivariate Copula (Step-by-step)](fitting-bivariate-copula.md)
+    - [Fitting Bivariate Copula (One-line Code)](fitting-bivariate-copula-one-line.md)
     - [Joint Probability Density Function and Its Visualization](joint-pdf.md)
     - [Copula Regression (One predictor)](copula-regression-one-predictor.md)
-3. [Trivariate Case](symmetric-3-copula.md)
-    - [Symmetric 3-copula](symmetric-3-copula.md)
-4. [Multivariate Copula](#)
-    - [Fully Nested Copula](fully-nested-copula.md)
+3. Trivariate Case (Symmetric 3-Copula)
+    - [Fitting Symmetric 3-copula (Step-by-step)](symmetric-3-copula.md)
+    - [Fitting Symmetric 3-copula (One-line code)](symmetric-3-copula-one-line.md)
+    - [Copula regression (2 predictors) via symmetric copula](copula-regression-symmetric.md)
+4. Multivariate Copula: Nested copula 
+    - [Fitting Fully Nested Copula](fully-nested-copula.md)
+    - [Copula regression (multiple predictors) via nested copula](copula-regression-nested.md)
 
 ## Download
 

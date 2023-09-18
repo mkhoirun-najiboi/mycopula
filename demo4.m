@@ -1,6 +1,7 @@
 %% Symmetric Trivariate
 clear;clc
 close all
+addpath('scr')
 
 %% Load data
 load stockreturns
@@ -15,3 +16,12 @@ F3 = fitter(X3); U3 = cdf(F3,X3);
 
 %%
 C = copfitter([U1,U2,U3],'verbosity',3);
+
+%% One line code
+clc
+load stockreturns
+x = stocks(:,1:3);
+C = symmetricfit(x);
+%%
+jpdf = jointpdf(C,x)
+jcdf = jointcdf(C,x)

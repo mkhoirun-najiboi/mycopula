@@ -1,19 +1,29 @@
-# Symmetric 3-Copula
+# Symmetric 3-Copula (Step-by-step)
 
+Now, we learn about trivariate copula. This is an extension of the bivariate copula. Here we learn about trivariate copulas through the exchangeable approach, or also called symmetric copulas. For more details, please read [1].
+
+## Fitting Process
+
+Let's start from step by step.
+
+**Load Data**
 ```matlab
 load stockreturns
 X1 = stocks(:,1);
 X2 = stocks(:,2);
 X3 = stocks(:,3);
+```
 
+**Marginal Distribution and Probability Transform**\
+Just like bivariate copula, the fitting step begins by determining the marginal distribution, then transforming the data.
+
+```matlab
 F1 = fitter(X1); U1 = cdf(F1,X1);
 F2 = fitter(X2); U2 = cdf(F2,X2);
 F3 = fitter(X3); U3 = cdf(F3,X3);
-
-C = copfitter([U1,U2,U3],'verbosity',3);
 ```
 
-```plaintext
+```text
 # ===== OUTPUT ======
 Domain = Real
 Sort by = Anderson-Darling Stastistics
@@ -32,7 +42,17 @@ Sort by = Anderson-Darling Stastistics
 fittest distribution = Generalized Extreme Value
 Parameters: k = -0.36064, sigma = 1.6488, mu = -0.92152
 Decision: fails to reject h0 (AD pval=0.9536)
- 
+```
+
+**Fitting Copula**\
+Then, fit the copula function using the transformed variables.
+
+```matlab
+C = copfitter([U1,U2,U3],'verbosity',3);
+```
+
+```plaintext
+# ===== OUTPUT ======
 Case = Symmetric Trivariate
 Sort by = Akaike Information Criterion
 Fittest copula = Gaussian
@@ -55,6 +75,7 @@ Summary =
     {'Clayton' }    {[  0.5799]}    {0×0 double  }     0.11185     0.4233    0.033444     -43.63
 
 ```
+Or, we provide a more concise way with just [one-line code](symmetric-3-copula-one-line.md).
 
 **Download**: this example is available on `demo4.m`. [Visit Github](https://github.com/mkhoirun-najiboi/mycopula)
 

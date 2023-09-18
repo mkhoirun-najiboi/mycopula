@@ -16,14 +16,14 @@ MathJax.Hub.Config({
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-# Fitting Bivariate Copula
+# Fitting Bivariate Copula (Step-by-step)
 
 Now let's start with the most basic thing which is how to fit the bivariate copula.
 
 mycopula provides a very easy way to fit a bivariate copula. This will automatically output the most appropriate marginal distribution and copula functions from the [listed functions](home.md).
 
 **Load Data**\
-Let's use the dataset provided by MATLAB, namely `stockreturns`, which consists of 10 observations from 10 stock assets.
+Let's use the dataset provided by MATLAB: `stockreturns`, which consists of 10 observations from 10 stock assets.
 ```matlab
 load stockreturns
 
@@ -142,6 +142,8 @@ Summary =
     {'BB1-90'      }    -2.2632e-09    {[    -1.0000]}     0.67122    0.014272    0.081928     4.0001
     {'BB1-270'     }    -9.0917e-10    {[    -1.0000]}     0.67122    0.014272    0.081928     4.0001
 ```
+
+For more convenience, we also provide copula fitting using only [one line of code](fitting-bivariate-copula-one-line.md).
 
 **Download**: this example is available on `demo1.m`. [Visit Github](https://github.com/mkhoirun-najiboi/mycopula)
 

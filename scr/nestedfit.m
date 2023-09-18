@@ -1,4 +1,9 @@
-function C = nestedfit(x)
+function C = nestedfit(x,varargin)
+
+okargs =   {'structplot' 'verbosity'};
+defaults = {1            1};
+[structplot,verbosity] = internal.stats.parseArgs(okargs,defaults,varargin{:});
+
 N = size(x,2);
 xa = x;
 
@@ -16,14 +21,13 @@ i = ii(t);
 perm = [perm,i];
 
 xa(:,[i,t]) = 0;
-w = u(:,i);
-
+w = u(:,i); 
 teks = 'Fitting Progress: ';
-disp(teks)
-for k = 1:N-1
+disp(teks) 
+for k = 1:N-1 
     fprintf(repmat('\b',1,length(teks)+1))
     teks = sprintf('Fitting Progress: %g/%g',k,N-1);
-    disp(teks)
+    disp(teks) 
     perm = [perm,t];
     c(1,k)=copfitter([w,u(:,t)],'verbosity',0);
     if k<N-1
@@ -33,46 +37,45 @@ for k = 1:N-1
         xa(:,t) = 0;
     end
 end
-fprintf(repmat('\b',1,length(teks)+1))
-
-fprintf('Permutation: %s\n',num2str(perm))
+if verbosity
+    fprintf(repmat('\b',1,length(teks)+1))
+    fprintf('Permutation: %s\n',num2str(perm))
+end
 F = F(perm);
+
+if verbosity
+    fprintf('Marginal Distribution: \n')
+    for i = 1:N
+        fprintf(' No. %g (x%g):',i,perm(i))
+        fprintf(' Dist Name = %s\n',F(i).DistributionName)
+        paramvalue = '';
+        for k = 1:length(F(i).ParameterNames)
+            paramvalue = [paramvalue,F(i).ParameterNames{k},' = ',num2str(F(i).ParameterValues(k))];
+            if k<length(F(i).ParameterNames)
+                paramvalue = [paramvalue,', '];
+            end
+        end
+        disp(['             ',paramvalue])
+    end
+    
+    fprintf('\nCase = Fully Nested Copula\n')
+    disp('Selected by = Akaike Information Criterion')
+    disp('Nested Layers:')
+    for i = 1:N-1
+        fprintf(' No. %g:',i)
+        fprintf(' Copula Name = %s\n',c(i).copulaName)
+
+        paramvalue = ['param1 = ',num2str(c(i).param1)];
+        if ~isempty(c(i).param2)
+            paramvalue = [paramvalue,' param2 = ',num2str(c(i).param2)];
+        end
+        disp(['        ',paramvalue])
+    end
+end
 
 C.perm = perm;
 C.Type = 'FullyNested'; 
 C.Marginal = F;
-fprintf('Marginal Distribution: \n')
-for i = 1:N
-    fprintf(' No. %g (x%g):',i,perm(i))
-    
-    fprintf(' Dist Name = %s\n',F(i).DistributionName)
-    
-    paramvalue = '';
-    for k = 1:length(F(i).ParameterNames)
-        paramvalue = [paramvalue,F(i).ParameterNames{k},' = ',num2str(F(i).ParameterValues(k))];
-        if k<length(F(i).ParameterNames)
-            paramvalue = [paramvalue,', '];
-        end
-    end
-    disp(['             ',paramvalue])
-end
-
-fprintf('\nCase = Fully Nested Copula\n')
-disp('Selected by = Akaike Information Criterion')
-disp('Nested Layers:') 
-for i = 1:N-1
-    fprintf(' No. %g:',i)
-    fprintf(' Copula Name = %s\n',c(i).copulaName)
-    
-    paramvalue = ['param1 = ',num2str(c(i).param1)];
-    if ~isempty(c(i).param2)
-        paramvalue = [paramvalue,' param2 = ',num2str(c(i).param2)];
-    end
-    disp(['        ',paramvalue])
-    
-    st = evalcopula(c(i),[w,u(:,i+1)],'cdf');
-end
-
 C.Copula = c;
 
 L = jointpdf(C,x);
@@ -95,27 +98,36 @@ RMSE = sqrt(MSE);
 CvMc = (CvM - 0.4/n + 0.6/n^2) * (1 + 1/n);
 % Compute the upper-tail p-value (Stephen, 1970).
 pVal = 0.05 * exp(2.79 - 6 * CvMc);
-
-fprintf('Goodness-of-fits:\n AIC (Joint PDF) = %.1f\n CvM  = %.3f\n RMSE = %.3f\n pVal = %.3f\n',...
-    AIC,CvM,RMSE,pVal)
-
-figure()
-pathx = [0,0,2,2];
-pathy = [1,2,2,1];
-hold on;box on
-plot(pathx,pathy,'k')
-pathx = [0.0,0.0,2,2];
-pathy = [1,2,2,1];
-for i = 2:N-1
-    plot(pathx+i-1,pathy+i-1,'k')
+if verbosity
+    fprintf('Goodness-of-fits:\n AIC (Joint PDF) = %.1f\n CvM  = %.3f\n RMSE = %.3f\n pVal = %.3f\n',...
+        AIC,CvM,RMSE,pVal)
 end
 
-xplot = [0,2:N];
-yplot = [1,1:N-1];
-scatter(xplot,yplot,400,'markerfacecolor','w','markeredgecolor','k')
-xlim([-1,N+1])
-ylim([0,N+1])
-xticks([])
-yticks([])
-text(xplot,yplot,strcat('x',num2str(C.perm')),'horizontal','center','vertical','middle')
-title('Nested Structure')
+if structplot
+    figure()
+    pathx = [0,0,2,2];
+    pathy = [1,2,2,1];
+    hold on;box on
+    plot(pathx,pathy,'k')
+    pathx = [0.0,0.0,2,2];
+    pathy = [1,2,2,1];
+    for i = 2:N-1
+        plot(pathx+i-1,pathy+i-1,'k')
+    end
+    plot([N-1,N-1],[N,N+.5],'k')
+
+    xplot = [0,2:N];
+    yplot = [1,1:N-1];
+    scatter(xplot,yplot,400,'markerfacecolor','w','markeredgecolor','k')
+    xlim([-1,N+1])
+    ylim([0,N+1])
+    xticks([])
+    yticks([])
+    text(xplot,yplot,strcat('X',num2str(C.perm')),'horizontal','center','vertical','middle')
+
+    xplot = [1:N-1];
+    yplot = [2:N];
+    text(xplot,yplot,strcat('C',num2str([1:N-1]')),'horizontal','center','vertical','top')
+
+    title('Nested Structure')
+end

@@ -1,8 +1,8 @@
-function [yhat,CI] = copulareg(x,y,varargin)
+function [yhat,CI] = reg1(x,y,varargin)
 
-okargs =   {'verbosity' 'top' 'npart' 'xpred' 'ypred'};
-defaults = {1           0     1000     []      []};
-[verbosity,top,npart,xpred,ypred] = internal.stats.parseArgs(okargs,defaults,varargin{:});
+okargs =   {'verbosity' 'npart' 'xpred' 'ypred'};
+defaults = {1               1000     []      []};
+[verbosity,npart,xpred,ypred] = internal.stats.parseArgs(okargs,defaults,varargin{:});
 
 predicts = 1;
 if isempty(xpred)
@@ -10,21 +10,14 @@ if isempty(xpred)
     predicts = 0;
 end
 
-% ============= Fitting Processes ==================%
-disp('Marginal: X')
-f = fitter(x,'verbosity',1);
-disp('Marginal: Y')
-g = fitter(y,'verbosity',1);
+% ============= Fitting Processes ==================% 
+f = fitter(x,'verbosity',0);
+g = fitter(y,'verbosity',0);
 
 u = cdf(f,x);
 v = cdf(g,y);
 
-[C,stat] = copfitter([u,v],'verbosity',1); 
-
-if top
-    C = stat(top);
-end
-
+C = copfitter([u,v],'verbosity',0); 
 
 % =============== Regression Process ===============%
 if isempty(C.param2)
@@ -92,3 +85,8 @@ plot(xx(ii),CI(ii,1),'-b','linewidth',1.2)
 plot(xx(ii),CI(ii,2),'-b','linewidth',1.2)
 xlabel('X')
 ylabel('Y')
+
+if ~predicts
+    yhat = [];
+    CI = [];
+end
