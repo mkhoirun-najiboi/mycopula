@@ -19,7 +19,7 @@ yhat = copreg(x,y,'xpred',x,'ypred',y,'method','Symmetric');
 ```
 
 ```plaintext
-# ===== OUTPUT =====
+% ===== OUTPUT =====
 Fit copula (X,Y)
 Fit copula (X)
 Case: 2-predictor

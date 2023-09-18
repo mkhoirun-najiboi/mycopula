@@ -47,7 +47,7 @@ F1 = fitter(x1);
 ```
 
 ```plaintext
-# ===== OUTPUT ======
+% ===== OUTPUT ======
 Domain = Real
 Sort by = Anderson-Darling Stastistics
 fittest distribution = Logistic
@@ -60,7 +60,7 @@ F2 = fitter(x2);
 ```
 
 ```plaintext
-# ===== OUTPUT ======
+% ===== OUTPUT ======
 Domain = Real
 Sort by = Anderson-Darling Stastistics
 fittest distribution = Generalized Extreme Value
@@ -96,7 +96,7 @@ C = copfitter([u1,u2],'verbosity',3);
 ```
 
 ```plaintext
-# ===== OUTPUT ======
+% ===== OUTPUT ======
 Case = Bivariate
 Sort by = Akaike Information Criterion
 Fittest copula = Gaussian

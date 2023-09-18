@@ -8,7 +8,7 @@ With the same example data as before, here is how.
 ```matlab
 load stockreturns
 x = stocks(:,1:2);
-C = bivariatefit(x,'verbosity',0); # to not display result information
+C = bivariatefit(x,'verbosity',0); % to not display result information
 ```
 
 ## Return the Joint CDF and Joint PDF

@@ -21,7 +21,7 @@ Use that data to perform a regression.
 ```
 
 ```plaintext
-# ===== OUTPUT ======
+% ===== OUTPUT ======
 Case: 1-predictor
 Method: Bivariate copula
 Regression Progress: 100.00%
@@ -42,11 +42,11 @@ Let's look at an example for other data.
 load polydata
 x = x(:);
 y = y(:);
-[yhat,CI] = copreg(x,y); # Only Perform the regression without predict data
+[yhat,CI] = copreg(x,y); % Only Perform the regression without predict data
 ```
 
 ```plaintext
-# ===== OUTPUT ======
+% ===== OUTPUT ======
 Case: 1-predictor
 Method: Bivariate copula
 Regression Progress: 100.00%

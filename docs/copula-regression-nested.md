@@ -19,7 +19,7 @@ Use that data to perform a regression.
 ```
 
 ```plaintext
-# ===== OUTPUT =====
+% ===== OUTPUT =====
 Fit copula (X,Y)
 Fitting Progress: 2/2
 Fit copula (X)
@@ -47,7 +47,7 @@ y = stocks(:,1);
 ```
 
 ```plaintext
-# ===== OUTPUT =====
+% ===== OUTPUT =====
 Fit copula (X,Y)
 Fitting Progress: 7/7
 Fit copula (X)

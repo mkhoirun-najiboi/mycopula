@@ -19,7 +19,7 @@ C = symmetricfit(x);
 ```
 
 ```text
-# ===== OUTPUT ======
+% ===== OUTPUT ======
 Marginal Distribution: 
  No. 1: Dist Name = Logistic
              mu = -0.19364, sigma = 0.58158

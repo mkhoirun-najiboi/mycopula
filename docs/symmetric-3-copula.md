@@ -24,7 +24,7 @@ F3 = fitter(X3); U3 = cdf(F3,X3);
 ```
 
 ```text
-# ===== OUTPUT ======
+% ===== OUTPUT ======
 Domain = Real
 Sort by = Anderson-Darling Stastistics
 fittest distribution = Logistic
@@ -52,7 +52,7 @@ C = copfitter([U1,U2,U3],'verbosity',3);
 ```
 
 ```plaintext
-# ===== OUTPUT ======
+% ===== OUTPUT ======
 Case = Symmetric Trivariate
 Sort by = Akaike Information Criterion
 Fittest copula = Gaussian

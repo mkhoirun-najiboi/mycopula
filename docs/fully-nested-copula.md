@@ -8,9 +8,9 @@ C = nestedfit(x);
 ```
 
 ```plaintext
-# ===== OUTPUT ======
+% ===== OUTPUT ======
 Permutation: 1  2  8  5  6  7  3  4
-Marginal Distribution: 
+Marginal Distribsution: 
  No. 1 (x1): Dist Name = Logistic
              mu = -0.19364, sigma = 0.58158
  No. 2 (x2): Dist Name = Generalized Extreme Value
